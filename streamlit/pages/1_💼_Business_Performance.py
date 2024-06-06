@@ -84,10 +84,10 @@ aumento = aumento/100
 # função transforma o dataframe e cria novas colunas
 feature_engineering(df_business, desconto, aumento)
 
-# filtragem pelo percentual de crescimento
+# ---------------------------------------------- filtragem ---------------------------------------------------
 df_business = df_business[(df_business['growth_spent'] > growth_percentage1)]
 
-# variaveis para o resultado da simulação
+# ---------------------------------------------- feature para simulacao ---------------------------------------------
 faturamento_dez = np.round(df_business['total_spent'].sum(), 2)
 faturamento_exp = np.round(df_business['new_spent'].sum(), 2)
 growth = np.round(100* (faturamento_exp - faturamento_dez) / faturamento_dez, 2)
@@ -101,9 +101,13 @@ tab1, tab2 = st.tabs(['Resultado', 'DataFrame'])
 
 with tab1:
     with st.container():
+        # titulo
         st.header("Explicação da Simulação:")
+
+        # explicacao
         st.markdown("- Dos 42 produtos selecionados anteriormente realizei uma filtragem pelos que tiveram vendas em Dezembro de 2017 para a simulação, resultando em 24 produtos.")
         
+        # resultado
         st.header("Resultado da Simulação:")
         st.markdown(f'- Faturamento Dezembro 2017 sem otimização de preços: ${faturamento_dez}')
         st.markdown(f'- Expectativa faturamento Janeiro 2018 com otimização de preços: ${faturamento_exp}')
@@ -117,7 +121,10 @@ df_business.columns = ['Produto','Quantidade','Preco','Elasticidade', 'Faturamen
 df_business_csv = df_business.to_csv(index=False, sep=';', encoding='latin1', decimal=',')
 
 with tab2:
+    # plotando dataframe
     st.dataframe(df_business)
+
+    # adicionando botao de download dos dados
     st.download_button("Download CSV", df_business_csv, "df_business.csv","text/csv",key='download-csv')
 
 
