@@ -16,7 +16,7 @@ st.set_page_config(
 #------------------------------------------------------------------------------------
 # Importando Dados
 #------------------------------------------------------------------------------------
-df_cross_elasticity = pd.read_csv('/home/tiagobarreto/DS/repos/elasticidade_preco/data/treated/cross_elasticity.csv')
+df_cross_elasticity = pd.read_csv('data/treated/cross_elasticity.csv')
 df_cross_elasticity = df_cross_elasticity.drop(columns = ['Unnamed: 0'])
 
 
@@ -25,7 +25,7 @@ df_cross_elasticity = df_cross_elasticity.drop(columns = ['Unnamed: 0'])
 #---------------------------------------------------------------------------------
 with st.sidebar:
     # carregando imagem
-    st.image('/home/tiagobarreto/DS/repos/elasticidade_preco/streamlit/images/bestbuy.png')
+    st.image('streamlit/images/bestbuy.png')
 
     # criando título
     st.title('Bestbuy')  

@@ -17,7 +17,7 @@ st.set_page_config(
 #------------------------------------------------------------------------------------
 # Importando Dados
 #------------------------------------------------------------------------------------
-df_business = pd.read_csv('/home/tiagobarreto/DS/repos/elasticidade_preco/data/treated/business.csv')
+df_business = pd.read_csv('data/treated/business.csv')
 df_business = df_business.drop(columns = ['Unnamed: 0'])
 
 
@@ -61,7 +61,7 @@ def feature_engineering(df8, desconto , aumento):
 #---------------------------------------------------------------------------------
 with st.sidebar:
     # carregando imagem
-    st.image('/home/tiagobarreto/DS/repos/elasticidade_preco/streamlit/images/bestbuy.png')
+    st.image('streamlit/images/bestbuy.png')
     
     # título
     st.title('Bestbuy')  
@@ -104,7 +104,7 @@ with tab1:
         st.header("Explicação da Simulação:")
 
         # explicacao
-        st.markdown("- Dos 42 produtos selecionados anteriormente realizei uma filtragem pelos que tiveram vendas em Dezembro de 2017 para a simulação, resultando em 24 produtos.")
+        st.markdown("- Dos 43 produtos selecionados anteriormente realizei uma filtragem pelos que tiveram vendas em Dezembro de 2017 para a simulação, resultando em 24 produtos.")
         
         # resultado
         st.header("Resultado da Simulação:")
