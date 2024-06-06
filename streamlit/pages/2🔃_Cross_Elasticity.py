@@ -4,14 +4,9 @@
 
 import pandas as pd
 import numpy as np
-# import inflection
-import plotly.express as px
 import streamlit as st
 from PIL import Image
 from matplotlib import pyplot as plt
-# import folium
-# from streamlit_folium import folium_static
-# from folium.plugins import MarkerCluster
 
 st.set_page_config(
     page_title="Main Page",
