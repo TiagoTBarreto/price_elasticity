@@ -21,36 +21,27 @@ st.set_page_config(
 #------------------------------------------------------------------------------------
 # Importando Dados
 #------------------------------------------------------------------------------------
-df_cross_elasticity = pd.read_csv('../data/treated/cross_elasticity.csv')
+df_cross_elasticity = pd.read_csv('/home/tiagobarreto/DS/repos/elasticidade_preco/data/treated/cross_elasticity.csv')
 df_cross_elasticity = df_cross_elasticity.drop(columns = ['Unnamed: 0'])
 
-
-#------------------------------------------------------------------------------------
-# Funções
-#------------------------------------------------------------------------------------
-
-#--------------------------------------------------------------------------
-# Limpeza
-#-------------------------------------------------------------------------
-
-# Criando um filtro de datas no sidebar
 
 #----------------------------------------------------------------------------------
 # Sidebar
 #---------------------------------------------------------------------------------
 with st.sidebar:
-    st.image('images/bestbuy.png')
-  
+    # carregando imagem
+    st.image('/home/tiagobarreto/DS/repos/elasticidade_preco/streamlit/images/bestbuy.png')
+
+    # criando título
     st.title('Bestbuy')  
 
+    # criando filtro por tipo do produto
     product_type = ['Substituto', 'Complementar']
     product_filter = st.multiselect("Selecione o Tipo do Produto", options=product_type, default=product_type)  
 
-# ---------------------------------------------- feature engineering ----------------------------------------------
+# ---------------------------------------------- filtragem ----------------------------------------------
 
-# df_cross_elasticity['growth_spent'] = df_cross_elasticity['growth_spent'].apply(lambda x: f"{x}%")
-
-
+# filtrando por tipo do produto
 if 'Substituto' in product_filter and 'Complementar' not in product_filter:
     df_cross_elasticity = df_cross_elasticity[df_cross_elasticity['price_elasticity'] >= 0]
 elif 'Complementar' in product_filter and 'Substituto' not in product_filter:
@@ -67,6 +58,7 @@ tab1, tab2 = st.tabs(['Insights', 'DataFrame'])
 
 with tab1:
     with st.container():
+        # produtos complementares
         st.header("Produtos Complementares")
         st.markdown("- Diminuindo o preço do produto em destaque aumenta a demanda pelos produtos complementares.")
         st.markdown("- Realizar Cross-Sell, oferecendo os produtos listados junto do desconto.")
@@ -97,6 +89,7 @@ with tab1:
                     5. Samsung - 40 Class - LED - MU7000 Series - 2160p - Smart - 4K UHD TV with HDR"
                     """)
 
+        # produtos substitutos
         st.header("Produtos Substitutos")
         st.markdown("- Aumentando o preço do produto em destaque aumenta a demanda pelos produtos substitutos.")
         st.markdown("- Se necessário desovar estoque, oferecer os produtos listados junto do aumento do produto em destaque.")
@@ -113,65 +106,12 @@ with tab1:
                     """)
 
 
+# salvando dataframe como csv
 df_cross_elasticity_csv = df_cross_elasticity.to_csv(index=False, sep=';', encoding='latin1', decimal=',')
 
 with tab2:
-
     st.dataframe(df_cross_elasticity)
     st.download_button("Download CSV", df_cross_elasticity_csv, "df_cross_elasticity.csv","text/csv",key='download-csv')
-#     st.dataframe(df_cross_elasticity)
-#     col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
-#     with col1:
-#         motorista_unico_atual = df_atual['taxi_id'].nunique()
-#         motorista_unico_past = df_passado['taxi_id'].nunique()
-#         col1.metric('Motoristas Cadastrados', value =motorista_unico_atual, delta = (motorista_unico_atual - motorista_unico_past))
-        
-#     with col2:
-
-#         pontos_unicos_atual = (df_atual['origin_stand'].nunique() - 1)
-#         pontos_unicos_past = (df_passado['origin_stand'].nunique() - 1)
-#         col2.metric('Pontos Cadastrados', value =pontos_unicos_atual, delta = (pontos_unicos_atual - pontos_unicos_past))
-        
-#     with col3:
-#         numeros_unicos_atual = (df_atual['origin_call'].nunique() - 1)
-#         numeros_unicos_past = (df_passado['origin_call'].nunique() - 1)
-#         col3.metric('Números Cadastrados', value =numeros_unicos_atual, delta = (numeros_unicos_atual - numeros_unicos_past))
-
-#     with col4:
-#         total_corridas_essa = df1['trip_id'].nunique()
-#         total_corridas_passada = df2['trip_id'].nunique()
-    
-#         aumento = (total_corridas_essa - total_corridas_passada)  
-#         col4.metric("Corridas", value = total_corridas_essa, delta= aumento)
-
-#     with col5:
-#         motorista_ativa = df1['taxi_id'].nunique()
-#         motorista_passada = df2['taxi_id'].nunique()
-#         col5.metric('Motoristas Ativos',value = motorista_ativa, delta= (motorista_ativa - motorista_passada))
-    
-#     with col6:
-#         corrida_motorista = np.round(total_corridas_essa/motorista_ativa, 2)
-#         corrida_motorista_pass = np.round(total_corridas_passada/motorista_passada, 2)
-#         delta6 = np.round(corrida_motorista - corrida_motorista_pass,2)
-#         col6.metric('Relação Corridas/Motorista',value = corrida_motorista, delta= delta6)
-    
-#     with col7:
-#         tempo_medio_atual = np.round(df1['time_spent'].mean(), 2) 
-#         tempo_medio_past = np.round(df2['time_spent'].mean(), 2) 
-#         mudanca = np.round((tempo_medio_atual - tempo_medio_past), 2)  
-#         col7.metric("Tempo Médio", value = tempo_medio_atual, delta= mudanca)
-
-# with st.container():
-#     col1, col2= st.columns (2)
-#     with col1:
-#         st.title('Mapa Inicial')   
-#         country_maps_inicial(df1)
-#     with col2:
-#         st.title('Mapa Final')   
-#         country_maps_final(df1)
-
-
-
 
 
 

@@ -4,14 +4,11 @@
 
 import pandas as pd
 import numpy as np
-# import inflection
 import plotly.express as px
 import streamlit as st
 from PIL import Image
 from matplotlib import pyplot as plt
-# import folium
-# from streamlit_folium import folium_static
-# from folium.plugins import MarkerCluster
+
 
 st.set_page_config(
     page_title="Main Page",
@@ -21,24 +18,16 @@ st.set_page_config(
 #------------------------------------------------------------------------------------
 # Importando Dados
 #------------------------------------------------------------------------------------
-df_business = pd.read_csv('../data/treated/business.csv')
+df_business = pd.read_csv('/home/tiagobarreto/DS/repos/elasticidade_preco/data/treated/business.csv')
 df_business = df_business.drop(columns = ['Unnamed: 0'])
 
 
 #------------------------------------------------------------------------------------
 # Funções
 #------------------------------------------------------------------------------------
-# Essa função tem como objetivo gerar um mapa com pontos nos locais do restaurantes de acordo com sua latitude e longitude. Todos os pontos possuem: 
-# 1. Clusterização através do comando MarkerCluster
-# 2. Ícone de uma casa branca e em volta a cor é de acordo com a avaliação (quanto mais verde melhor avaliado é o restaurante), dentro desse ícone tem:
-    # 1. Nome do Restaurante
-    # 2. Preço médio para dois e a moeda
-    # 3. Tipo de culinária
-    # 4. Nota de avaliação
-
+# Essa função tem como criar novas colunas e calcular os novos preços e novas quantidades a partir do desconto e aumento fornecido
 def feature_engineering(df8, desconto , aumento):
     df8.loc[:, 'total_spent'] = df8['date_imp'] * df8['price']
-
 
     # criando o novo preço
     # - se a elasticidade for negativa vai ter um desconto de 25% nos produtos
@@ -69,41 +58,36 @@ def feature_engineering(df8, desconto , aumento):
     return df8
 #-----------------------------------------------------------------
 
-    
-# data_inicial_default = pd.to_datetime('2014-06-30').date()
-# data_final_default = pd.to_datetime('2014-06-30').date()
-# df['timestamp'] = pd.to_datetime(df['timestamp']).dt.date
-
-#--------------------------------------------------------------------------
-# Limpeza
-#-------------------------------------------------------------------------
-
-# Criando um filtro de datas no sidebar
-
-#----------------------------------------------------------------------------------
 # Sidebar
 #---------------------------------------------------------------------------------
 with st.sidebar:
-    st.image('images/bestbuy.png')
-  
+    # carregando imagem
+    st.image('/home/tiagobarreto/DS/repos/elasticidade_preco/streamlit/images/bestbuy.png')
+    
+    # título
     st.title('Bestbuy')  
 
+    # filtro desconto
     desconto = st.slider('Selecione o Desconto', min_value = 0, max_value = 30, value = 20, step = 5)
+
+    # filtro desconto
     aumento = st.slider('Selecione o Aumento', min_value = 0, max_value = 30, value = 10, step = 5)
+
+    # filtro crescimento
     growth_percentage1 = st.slider('Selecione a Porcentagem de Aumento', min_value = 0, max_value = 200, value = 30, step = 10)
 
 # ---------------------------------------------- feature engineering ----------------------------------------------
-# criando variável com gasto total
+# dividindo o desconto por 100 para poder realizar cálculos
 desconto = desconto/100
 aumento = aumento/100
 
-
+# função transforma o dataframe e cria novas colunas
 feature_engineering(df_business, desconto, aumento)
 
+# filtragem pelo percentual de crescimento
 df_business = df_business[(df_business['growth_spent'] > growth_percentage1)]
-# df_business['growth_spent'] = df_business['growth_spent'].apply(lambda x: f"{x}%")
 
-
+# variaveis para o resultado da simulação
 faturamento_dez = np.round(df_business['total_spent'].sum(), 2)
 faturamento_exp = np.round(df_business['new_spent'].sum(), 2)
 growth = np.round(100* (faturamento_exp - faturamento_dez) / faturamento_dez, 2)
@@ -117,28 +101,22 @@ tab1, tab2 = st.tabs(['Resultado', 'DataFrame'])
 
 with tab1:
     with st.container():
-
         st.header("Explicação da Simulação:")
-        
         st.markdown("- Dos 42 produtos selecionados anteriormente realizei uma filtragem pelos que tiveram vendas em Dezembro de 2017 para a simulação, resultando em 24 produtos.")
         
-        
         st.header("Resultado da Simulação:")
-
         st.markdown(f'- Faturamento Dezembro 2017 sem otimização de preços: ${faturamento_dez}')
         st.markdown(f'- Expectativa faturamento Janeiro 2018 com otimização de preços: ${faturamento_exp}')
         st.markdown(f'- Crescimento no Faturamento: {growth}%')
 
 
-
+# trocando nome das colunas
 df_business.columns = ['Produto','Quantidade','Preco','Elasticidade', 'Faturamento', 'Novo Preco', 'Nova Quantidade','Novo Faturamento', 'Crescimento']
-# df_business['Crescimento'] = df_business['Crescimento'].apply(lambda x: f"{x}%")
 
-
+# exportando o dataframe como csv
 df_business_csv = df_business.to_csv(index=False, sep=';', encoding='latin1', decimal=',')
 
 with tab2:
-
     st.dataframe(df_business)
     st.download_button("Download CSV", df_business_csv, "df_business.csv","text/csv",key='download-csv')
 
