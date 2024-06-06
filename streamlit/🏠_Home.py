@@ -17,7 +17,7 @@ st.set_page_config(
 #------------------------------------------------------------------------------------
 # Importando Dados
 #------------------------------------------------------------------------------------
-df_elasticity = pd.read_csv('/home/tiagobarreto/DS/repos/elasticidade_preco/data/treated/df_elasticity.csv')
+df_elasticity = pd.read_csv('data/treated/df_elasticity.csv')
 df_elasticity = df_elasticity.drop(columns = ['Unnamed: 0'])
 df_elasticity.columns = ['Produto','Elasticidade', 'Preco Medio', 'Demanda Média', 'Intercept', 'Slope', 'R²', 'P-Valor', 'Ranking']
 
@@ -53,7 +53,7 @@ def plot_elasticity(df_elasticity):
 
 with st.sidebar:
     # carregando imagem
-    st.image('/home/tiagobarreto/DS/repos/elasticidade_preco/streamlit/images/bestbuy.png')
+    st.image('streamlit/images/bestbuy.png')
 
     # título
     st.title('Bestbuy')  
