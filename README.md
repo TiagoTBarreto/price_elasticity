@@ -115,7 +115,7 @@ Através de um projeto de elasticidade de preço prever como alterações nos pr
 
 ## 9.1 Diferença entre produto Complementar e Substituto:
 1. **Complementar:** São os produtos que tem Elasticidade Negativa: Então uma diminuição no preço do produto A aumenta a demanda pelo produto B.
-- Exemplo: Elasticidade = 2 -> Uma diminuição de 2% no preço do produto A aumenta a demanda em 4% do produto B.\n
+- Exemplo: Elasticidade = 2 -> Uma diminuição de 2% no preço do produto A aumenta a demanda em 4% do produto B.
 2. **Substituto:** São os produtos que tem Elasticidade Positiva: Então um aumento no preço do produto A aumenta a demanda pelo produto B.
 - Exemplo: Elasticidade = 5 -> Um aumento de 2% no preço do Produto A aumenta a demanda em 10% do produto B.
 
