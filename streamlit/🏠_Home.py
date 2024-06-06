@@ -99,24 +99,34 @@ st.title('Elasticidade de Preço - Bestbuy.com')
 tab1, tab2 = st.tabs(['Gráfico', 'DataFrame'])
 
 with tab1:
+    # titulo
     st.header("Explicação Elasticidade Positiva e Negativa")
 
+    # explicacao elasticidade
     st.markdown("""
                 **Positiva:** A demanda pelo produto aumenta quando aumenta seu preço.
                 - Exemplo: Elasticidade = 2 -> Um aumento de 2% no preço aumenta a demanda em 4%.\n
                 **Negativa:** A demanda pelo produto aumenta quando diminui seu preço.
                 - Exemplo: Elasticidade = 5 -> Uma diminuição de 2% no preço aumenta a demanda em 10%.
 """)
-
+    
+    # titulo
     st.header("Explicações sobre os produtos selecionados:")
+
+    # explicacao selecao produtos
     st.markdown("- Dos 600 produtos, foram escolhidos os 43 que a Elasticidade teve respaldo estatístico.")
 
+    # usando a funcao para gerar o grafico
     fig = plot_elasticity(df_elasticity)
+
+    # plotando o grafico
     st.pyplot(fig)
 
 with tab2:
+    # plotando o dataframe
     st.dataframe(df_elasticity)
     
+    # adicionando botao de download dos dados
     st.download_button("Download CSV", df_elasticity_csv, "df_elasticity.csv","text/csv",key='download-csv')
 
 
