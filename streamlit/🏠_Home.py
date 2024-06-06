@@ -113,7 +113,7 @@ with tab1:
     st.header("Explicações sobre os produtos selecionados:")
 
     # explicacao selecao produtos
-    st.markdown("- Dos 600 produtos, foram escolhidos os 43 que a Elasticidade teve respaldo estatístico.")
+    st.markdown("- Dos 485 produtos, foram escolhidos os 43 que a Elasticidade teve respaldo estatístico.")
 
     # usando a funcao para gerar o grafico
     fig = plot_elasticity(df_elasticity)
