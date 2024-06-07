@@ -1,8 +1,9 @@
 # Elasticidade de Preço - Bestbuy.com
 
 <p align="center">
-  <img src="https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/84157c15-e41e-436b-8751-031061869d54" width="100%" height="500">
+  <img src="https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/5c5c56fa-519b-48a7-b143-d3a59a502301" width="100%" height="500">
 </p>
+
 
 # 1. Problema de Negócio
 A BestBuy.com, uma das principais varejistas online de eletrônicos, oferece uma vasta gama de produtos, incluindo televisores, laptops, acessórios e serviços digitais. Em um mercado altamente competitivo com consumidores sensíveis a preços, a empresa busca otimizar suas estratégias de precificação para maximizar receita e lucratividade.
@@ -50,23 +51,23 @@ Através de um projeto de elasticidade de preço prever como alterações nos pr
 # 4. Exploração dos Dados 
 ## 4.1 Mês
 - Mês 4 registrou poucas transações
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/33bdb6bf-2554-44f9-b731-a09472c54de0)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/5907e9a7-3b04-40be-aa4c-a253ee7d6d98)
 
 ## 4.2 Merchant
 - Merchant com maior volume foi o Bestbuy.com
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/ab3c6d58-8296-4714-9d60-51990106a842)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/362227e3-f296-4038-bd62-72ee4f130d3d)
 
 ## 4.3 Marca
 - Apple e Sony são as marcas com maior volume de transações.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/6356f3f8-8260-498c-bd63-3d79d7541e72)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/04b8a43b-6b2d-4669-a840-9e9ad1a9a416)
 
 ### 4.3.1 Apple
 - Dois produtos com registro de venda outlier com valores perto de 0.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/50d96cea-c5c8-496e-b8e9-fb8f7eb7fbb6)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/c6f8d114-ada1-4fa2-b413-14449b1bdeb2)
 
 ### 4.3.2 Sony
 - Um produto com registro de venda outlier com valores perto de 0.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/99792831-ad89-4254-a2ae-d5dc5575d2c7)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/78009ea8-f9c1-449b-8f52-237dff20c62b)
 
 
 # 5. Premissas assumidas para a análise
@@ -78,7 +79,7 @@ Através de um projeto de elasticidade de preço prever como alterações nos pr
 # 6. Elasticidade-Preço da Demanda:
 - Medida que indica a sensibilidade na demanda de um produto em relação a variações no preço. Pode ser calculada com a seguinte fórmula, onde Q = Quantidade (Demanda) e P = Preço
   
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/9def2fa9-7cf0-48aa-ab18-3cf4fe3d1950)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/342e3fa3-fe89-4dca-b9c3-2136223a564a)
 
 ## 6.1 Elasticidade Positiva x Negativa:
 - Positiva: e = 5 -> Um aumento de 1% no preço leva a um aumento de 5% na demanda.
@@ -96,7 +97,7 @@ Através de um projeto de elasticidade de preço prever como alterações nos pr
 - Dos 485 produtos analisados, somente 43 mostraram uma relação entre preço e quantidade que foi estatisticamente significativa.
 
 ## 7.1 Visualização da Elasticidade
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/42932ef4-5850-4a35-9e4d-46f568febdc5)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/e0c4106b-2de8-4f56-9ec1-fb4dd0d74e62)
 
 # 8.0 Business Performance
 ## 8.1 Simulação:
@@ -159,25 +160,26 @@ WebApp online, hospedado no Streamlit Cloud, está disponível para acesso em qu
 
 ## 10.1 Home
 - Na aba Gráfico tem uma explicação sobre elasticidade positiva e negativa e um gráfico.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/e3ac19c9-8251-43ff-b50d-88917cb68915)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/18b88967-e1ab-4221-863c-5fce5353abc4)
 
 - Na aba Dataframe é possível baixar um arquivo csv com todas as métricas do OLS (p-valor, R2)
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/f9571c4b-66d0-44fc-88e3-7d2ec25d496d)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/47f47558-5127-4763-a244-e45ee232b132)
 
 
 ## 10.2 Business Performance
 - Na aba Resultado é possível calcular o faturamento previsto e o aumento percentual com base no desconto e aumento escolhido e também filtrar os produtos pelo aumento no faturamento.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/263b94ae-c7bd-4eab-8500-8e09673ff9f4)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/5c9a17ee-1479-478b-9980-1bc5de3e66c5)
 
 - Na aba Dataframe é possível baixar um arquivo csv com os valores antigos e após a previsão:
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/95f3b6d6-5e9c-45c3-8d86-a3c3ccb7f44b)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/c95a0270-51b4-4e44-8941-f96868f974e8)
 
 ## 10.3 Cross Elasticity
 - Na aba Insights tem explicações sobre o que é um Produto Complementar e Substituto e recomendações de cross-sell e também de desova de estoque.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/2f648d4c-a404-4ec7-a7f8-81c6f728a58b)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/d95ef25e-b2bb-4b43-b255-93f43c198773)
 
 - Na aba Dataframe é possível baixar um arquivo csv com os produtos e sua elasticidade e também realizar filtros de produto complementar e subsituto.
-![image](https://github.com/TiagoTBarreto/streamlit-taxi/assets/137197787/13f7d788-0d1a-4b81-b528-64d973be3311)
+![image](https://github.com/TiagoTBarreto/price_elasticity/assets/137197787/9440c26b-455e-49a9-968f-a713fbb412dc)
+
 
 
 
